@@ -404,7 +404,7 @@ int get_spi_bus_path_number(unsigned int spi)
 #endif
 
   if (spi == 0) {
-      snprintf(path, sizeof(path), "%s/48030000.spi/spi_master/spi1", ocp_dir);
+      snprintf(path, sizeof(path), "%s/48030000.spi/spi_master/spi0", ocp_dir);
   } else {
       snprintf(path, sizeof(path), "%s/481a0000.spi/spi_master/spi1", ocp_dir);
   }
@@ -412,7 +412,7 @@ int get_spi_bus_path_number(unsigned int spi)
   DIR* dir = opendir(path);
   if (dir) {
       closedir(dir);
-      //device is using /dev/spidev1.x
+      //device is using /dev/spidev0.x
       return 1;
   } else if (ENOENT == errno) {
       //device is using /dev/spidev2.x
